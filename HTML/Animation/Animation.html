@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        div{
+            background-color:rgb(117, 191, 7);
+            border-radius:5px;
+            height:50px;
+            width:100px;
+            color:white;
+            position:relative;
+            animation: anim 5s ease;
+            animation-iteration-count: 1;
+        }
+        h1{
+            padding-top:5px;
+            padding-left:20px;
+        }
+        @keyframes anim{
+            0% {background-color: rgb(117, 191, 7);transform:rotate(0deg);left:0px;}
+            10%{background-color: rgb(88, 198, 235);transform:rotate(20deg);left:0px;}
+            50%{background-color: rgb(88, 198, 235);transform:rotate(0deg);left:400px;}
+            60%{background-color: rgb(88, 198, 235);transform:rotate(0deg);left:400px;}
+            100%{background-color: rgb(117, 191, 7);transform:rotate(-360deg);left:0px;}
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>CSS</h1>
+    </div>
+</body>
+</html>

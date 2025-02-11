@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embontooth - The Outcast Warlock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #ddd;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            text-align: left;
+        }
+        .content {
+            display: flex;
+            align-items: flex-start;
+        }
+        .image-container {
+            margin-right: 20px;
+        }
+        .image-container img {
+            border-radius: 10px;
+            height: 500px;
+            width: 500px;
+        }
+        h1, h2 {
+            color: #ffcc00;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 5px 0;
+        }
+        button {
+            margin: 5px;
+            padding: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #666;
+        }
+        .dice-roller {
+            margin-top: 20px;
+        }
+        .dice-roller input {
+            width: 50px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function updateHP(amount) {
+            let hpElement = document.getElementById("hp-value");
+            let currentHP = parseInt(hpElement.textContent);
+            currentHP += amount;
+            hpElement.textContent = currentHP;
+        }
+
+        function rollDice() {
+            const numDice = parseInt(document.getElementById('num-dice').value);
+            const numSides = parseInt(document.getElementById('num-sides').value);
+            let result = 0;
+            for (let i = 0; i < numDice; i++) {
+                result += Math.floor(Math.random() * numSides) + 1;
+            }
+            document.getElementById('dice-result').textContent = 'Result: ' + result;
+        }
+    </script>
+</head>
+<body>
+    <div class="content">
+        <div class="image-container">
+            <img src="DnD.jpg" alt="DnD Character">
+        </div>
+        <div class="container">
+            <h1>Embontooth</h1>
+            <h2>The Outcast Warlock</h2>
+            <p><strong>Race/Class:</strong> Half-Dwarf, Half-Elf Warlock</p>
+            <p><strong>Alignment:</strong> Chaotic Neutral</p>
+            <p><strong>Gold:</strong> 10</p>
+            <h2>Ability Scores</h2>
+            <ul>
+                <li><strong>STR:</strong> 10 (+0)</li>
+                <li><strong>DEX:</strong> 12 (+1)</li>
+                <li><strong>CON:</strong> 14 (+2)</li>
+                <li><strong>INT:</strong> 13 (+1)</li>
+                <li><strong>WIS:</strong> 10 (+0)</li>
+                <li><strong>CHA:</strong> 16 (+3)</li>
+            </ul>
+            <h2>Combat Stats</h2>
+            <p><strong>Max HP: 18</strong></p>
+            <p><strong>HP:</strong> <span id="hp-value">18</span>
+            <button onclick="updateHP(1)">+1 HP</button>
+            <button onclick="updateHP(-1)">-1 HP</button></p>
+            <p><strong>AC:</strong> 10 (Leather Armor)</p>
+            <p><strong>Speed:</strong> 30 ft</p>
+            <h2>Proficiencies</h2>
+            <ul>
+                <li>Saving Throws: Wisdom, Charisma</li>
+                <li>Skills: Arcana, Deception, Intimidation, Persuasion</li>
+                <li>Languages: Common, Dwarvish, Elvish</li>
+            </ul>
+            <h2>Equipment</h2>
+            <ul>
+                <li>Pact Weapon: Spectral Dagger (1d6 + CHA modifier)</li>
+                <li>Leather Armor</li>
+                <li>Spellcasting Focus: Anvil Chunk (1d6 bludgeoning)</li>
+                <li>Explorer’s Pack</li>
+            </ul>
+            <h2>Spells</h2>
+            <p><strong>Cantrips:</strong> Eldritch Blast, Mage Hand</p>
+            <p><strong>Level 1 Spells (2 slots):</strong> Hex, Armor of Agathys</p>
+            <h2>Features</h2>
+            <ul>
+                <li>Pact Magic: Regain spell slots on a short rest.</li>
+                <li>Otherworldly Patron: The Fiend.</li>
+                <li>Dark One’s Blessing: Gain 5 temp HP when reducing an enemy to 0 HP.</li>
+            </ul>
+            <h2>Personality</h2>
+            <p>You’re bitter and sarcastic, but your charm can be disarming.</p>
+            <p>“I don’t need your approval—I’ve got power you can’t even imagine.”</p>
+            <div class="dice-roller">
+                <h2>Dice Roller</h2>
+                <label for="num-dice">Number of Dice:</label>
+                <input type="number" id="num-dice" value="1" min="1">
+                <label for="num-sides">Number of Sides:</label>
+                <input type="number" id="num-sides" value="6" min="2">
+                <button onclick="rollDice()">Roll</button>
+                <p id="dice-result">Result: </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
