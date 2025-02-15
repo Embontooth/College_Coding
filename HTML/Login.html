@@ -23,9 +23,16 @@
             <input type="text" placeholder="  Enter your password">
         </div1>
         <br><br>
-        <button>
+        <button id="loginb">
             Login
         </button>
+        <script>
+            const button = document.getElementById("loginb");
+            button.addEventListener("click",function sent(){
+                alert("The form has been submitted sucessfully");
+                console.log("sucessfully sent");
+            });
+        </script>
         <br><br>
         <divf>
             Forgot Password?
