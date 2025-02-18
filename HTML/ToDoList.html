@@ -35,6 +35,21 @@
             border-radius: 25px;
             border:1px solid white;
         }
+        .Refresh{
+            height:75px;
+            width:100px;
+            bottom:20px;
+            margin-left:20px;
+            background-color: rgb(47, 185, 231);
+            position:fixed;
+            color:white;
+            font-size: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 25px;
+            border:1px solid white;
+        }
         #tasks{
             display: flex;
             flex-direction: column;
@@ -49,6 +64,7 @@
     <header>To - Do Checklist</header>
     <main>
         <div id="tasks"></div>
+        <button class="Refresh" onclick="removeCompletedTasks()">Update</button>
         <button class="Button" onclick="createtask()">+</button>
     </main>
 </body>
@@ -64,6 +80,15 @@
         let newLabel = document.createElement("label");
         newLabel.innerHTML=task;
         newLabel.style.marginLeft="10px";
+        newInput.addEventListener("change", function () {
+        if (this.checked) {
+            newLabel.style.textDecoration = "line-through";
+            newLabel.style.color = "gray";
+        } else {
+            newLabel.style.textDecoration = "none";
+            newLabel.style.color = "black";
+        }
+    });
         let newTask = document.querySelector("#tasks");
         let newDiv = document.createElement("container");
         newDiv.className="task";
@@ -72,6 +97,14 @@
         newDiv.append(newInput,newLabel);
         newTask.appendChild(newDiv);
     }
-    let checker = document.querySelectorAll("task")
+    function removeCompletedTasks() {
+        let tasks = document.querySelectorAll(".task"); 
+        tasks.forEach(task => {
+            let checkbox = task.querySelector("input[type='checkbox']");
+            if (checkbox.checked) {
+                task.remove();
+            }
+        });
+    }
 </script>
 </html>
