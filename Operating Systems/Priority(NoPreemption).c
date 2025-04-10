@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-void sjf(int bt[], int at[], int n)
+void pri(int bt[], int at[], int pri[], int n)
 {
     int comp = 0;
     int iscomp[n], tat[n], wt[n], ct[n];
@@ -11,30 +11,30 @@ void sjf(int bt[], int at[], int n)
     int t = 0;
     while (comp < n)
     {
-        int shortest = -1;
+        int priority = -1;
         for (int i = 0; i < n; i++)
         {
             if (at[i] <= t && iscomp[i] == 0)
             {
-                if (shortest == -1)
+                if (priority == -1)
                 {
-                    shortest = i;
+                    priority = i;
                 }
-                else if (bt[i] < bt[shortest])
+                else if (pri[i] < pri[priority])
                 {
-                    shortest = i;
+                    priority = i;
                 }
             }
         }
-        if (shortest == -1)
+        if (priority == -1)
         {
             t++;
         }
         else
         {
-            t += bt[shortest];
-            ct[shortest] = t;
-            iscomp[shortest] = 1;
+            t += bt[priority];
+            ct[priority] = t;
+            iscomp[priority] = 1;
             comp++;
         }
     }
@@ -48,7 +48,8 @@ void sjf(int bt[], int at[], int n)
 }
 int main()
 {
-    int bt[5] = {2, 1, 3, 5, 4};
-    int at[5] = {2, 0, 1, 3, 4};
-    sjf(bt, at, 5);
+    int bt[5] = {11, 28, 2, 10, 16};
+    int pri[5] = {2, 0, 3, 1, 4};
+    int at[5] = {0, 5, 12, 2, 9};
+    pri(bt, at, pri, 5);
 }
